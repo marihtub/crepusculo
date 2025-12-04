@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+   
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projeto</title>
+
+    <style>
+
+
+.banner-div{
+    width: 100%;
+height: 90vh;
+}
+
+        .personagens{
+            border-bottom: 5px red solid;
+            width: 33%;
+        }
+body{
+  font-family: "Vampiro One", system-ui;
+  font-weight: 400px;
+  font-style: normal;
+  color: white;
+ background: #a31010;
+background: linear-gradient(90deg,rgba(163, 16, 16, 1) 16%, rgba(0, 0, 0, 1) 27%, rgba(0, 0, 0, 1) 52%, rgba(0, 0, 0, 1) 78%);
+width: 100%;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+        .paralax{
+           
+            width: 100%;
+           height: 100%;
+           object-fit: cover;
+            
+        }
+
+        .personagem img{
+    width:150px;
+    border-radius: 50%;
+    height: 150px;
+    object-fit: cover;
+}
+.personagem{
+    display: flex;
+    align-items: center;
+    margin-top: 2em;
+}
+body{
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.banner{
+     margin: auto;
+    display: block;
+}
+.personagem p{
+    padding: 5px;
+    color: antiquewhite;
+}
+
+:root {
+	--lerp-0: 1;
+  --lerp-1: 0.5625;
+  --lerp-2: 0.25;
+  --lerp-3: 0.0625;
+  --lerp-4: 0;
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+h1 {
+  position: fixed;
+  bottom: var(--size-4);
+  right: var(--size-4);
+  margin: 0;
+  color: var(--gray-0);
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	font-family:  'Google Sans', sans-serif, system-ui;
+	
+}
+
+:root {
+  --lerp-0: 1;
+  --lerp-1: 0.5625;
+  --lerp-2: 0.25;
+  --lerp-3: 0.0625;
+  --lerp-4: 0;
+}
+
+.blocks {
+	display: flex;
+	list-style-type: none;
+	padding: var(--size-2);
+	border-radius: var(--radius-3);
+	gap: var(--size-4);
+	background: hsl(0 0% 100% / 0.5);
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	backdrop-filter: blur(10px);
+}
+
+.blocks:hover {
+	--show: 1;
+}
+
+
+.block {
+	width: 48px;
+	height: 48px;
+	display: grid;
+	place-items: center;
+	align-content: center;
+	transition: flex 0.2s;
+	flex: calc(0.2 + (var(--lerp, 0) * 1.5));
+	position: relative;
+}
+
+.block:after {
+	content: '';
+	width: 5%;
+	aspect-ratio: 1;
+	background: var(--text-1);
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	border-radius: var(--radius-3);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+.block:before {
+	content: '';
+	position: absolute;
+	width: calc(100% + var(--size-4));
+	bottom: 0;
+	aspect-ratio: 1 / 2;
+	left: 50%;
+	transition: transform 0.2s;
+	transform-origin: 50% 100%;
+	transform: translateX(-50%) scaleY(var(--show, 0));
+	z-index: -1;
+}
+
+.block .block__item {
+  transition: outline 0.2s;
+  outline: transparent var(--size-1) solid;
+}
+
+:is(.block:hover, .block:focus-visible) .block__item {
+	outline: var(--surface-1) var(--size-1) solid;
+}
+
+.block {
+	outline: none;
+}
+
+.block__item {
+	width: 100%;
+	aspect-ratio: 1;
+	border-radius: var(--radius-3);
+	background: var(--bg), var(--surface-1);
+	display: inline-block;
+	transition: transform 0.3s ease;
+	transform-origin: 50% 100%;
+	position: relative;
+	transform: translateY(calc(var(--lerp) * -75%));
+    position: relative;
+    top: 0;
+     transition: top ease 0.5s;
+}
+
+.block-item:hover {
+    transform: translateY(-10px); 
+}
+
+.block__item:after {
+	content: '';
+	position: absolute;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	aspect-ratio: 1;
+	border-left: var(--size-2) solid white;
+	border-top: var(--size-2) solid white;
+	border-radius: var(--radius-3);
+	mask: linear-gradient(135deg, black, transparent 50%);
+}
+
+@media(prefers-color-scheme: dark) {
+	body {
+		background: var(--gradient-23);
+	}
+	.blocks {
+		background: hsl(0 0% 0% / 0.5);
+	}
+}
+
+
+:is(.block:hover, .block:focus-visible) {
+  --lerp: var(--lerp-0);
+  z-index: 5;
+}
+.block:has( + :is(.block:hover, .block:focus-visible)),
+:is(.block:hover, .block:focus-visible) + .block {
+  --lerp: var(--lerp-1);
+  z-index: 4;
+}
+.block:has( + .block + :is(.block:hover, .block:focus-visible)),
+:is(.block:hover, .block:focus-visible) + .block + .block {
+  --lerp: var(--lerp-2);
+  z-index: 3;
+}
+.block:has( + .block + .block + :is(.block:hover, .block:focus-visible)),
+:is(.block:hover, .block:focus-visible) + .block + .block + .block {
+  --lerp: var(--lerp-3);
+  z-index: 2;
+}
+.block:has( + .block + .block + .block + :is(.block:hover, .block:focus-visible)),
+:is(.block:hover, .block:focus-visible) + .block + .block + .block + .block {
+  --lerp: var(--lerp-4);
+  z-index: 1;
+}
+
+
+body:has(a[style="--bg: var(--gradient-1);"]:focus) {
+	background: var(--gradient-1);
+}
+body:has(a[style="--bg: var(--gradient-2);"]:focus) {
+	background: var(--gradient-2);
+}
+body:has(a[style="--bg: var(--gradient-3);"]:focus) {
+	background: var(--gradient-3);
+}
+body:has(a[style="--bg: var(--gradient-4);"]:focus) {
+	background: var(--gradient-4);
+}
+body:has(a[style="--bg: var(--gradient-5);"]:focus) {
+	background: var(--gradient-5);
+}
+body:has(a[style="--bg: var(--gradient-6);"]:focus) {
+	background: var(--gradient-6);
+}
+body:has(a[style="--bg: var(--gradient-7);"]:focus) {
+	background: var(--gradient-7);
+}
+body:has(a[style="--bg: var(--gradient-8);"]:focus) {
+	background: var(--gradient-8);
+}
+body:has(a[style="--bg: var(--gradient-9);"]:focus) {
+	background: var(--gradient-9);
+}
+        
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="banner-div">
+
+<img class="paralax" src="https://www.bing.com/th/id/OGC.8c00fa8f714c02b184661ffd52452164?o=7&pid=1.7&rm=3&rurl=https%3a%2f%2f4.bp.blogspot.com%2f-gdo5bt5mXoA%2fUHn_BO--lbI%2fAAAAAAAArGI%2fbe3hvCIuQ6w%2fs1600%2f14ja3.gif&ehk=6EMNvvoNTHKLuTbS50%2f7gM4y6phYoORDB8D17EksaVI%3d" alt="gif de crepusculo">
+
+</div>
+    <h1>crepuscúlo</h1>
+    <h2> A saga de crepuscúlo: Descrição!</h2>
+
+    <p>A Saga Crepúsculo é uma série de filmes de fantasia romântica de vampiros baseada na série de livros Crepúsculo de Stephenie Meyer . <br> A série arrecadou mais de US$ 3,36 bilhões em todo o mundo. O primeiro filme, Crepúsculo , foi lançado em 21 de novembro de 2008.  O segundo filme, Lua Nova , foi lançado em 20 de novembro de 2009.  O terceiro filme, Eclipse , foi lançado em 30 de junho de 2010.  O quarto filme, Amanhecer Parte 1 , foi lançado em 18 de novembro de 2011, enquanto o quinto e último filme, Amanhecer  Parte 2 , foi lançado em 16 de novembro de 2012. 
+
+A série estava em desenvolvimento desde 2004 na MTV Films da Paramount Pictures , período durante o qual foi escrita uma adaptação cinematográfica de Crepúsculo que diferia significativamente do romance.  Três anos depois, a Summit Entertainment adquiriu os direitos do filme. Após Crepúsculo arrecadar US$ 35,7 milhões em seu dia de estreia,  a Summit Entertainment anunciou que começaria a produção de Lua Nova ; eles haviam adquirido os direitos dos romances restantes no início daquele mesmo mês.  Os filmes da série receberam críticas geralmente negativas a mistas, mas foram bem recebidos pelos fãs dos livros.</p>
+
+<h3>Descrição dos personagens!</h3>
+
+</body>
+
+
+<p>°Bella Swan: A protagonista humana que se envolve com Edward.
+°Edward Cullen: Um vampiro que se apaixona por Bella.
+°Jacob Black: O melhor amigo de Bella, que se transforma em lobo.
+°Alice Cullen: A irmã de Edward, que tem a habilidade de prever o futuro.
+°Carlisle Cullen: O patriarca da família Cullen e um médico.
+Esses personagens são centrais na história de amor e conflitos sobrenaturais que permeiam a saga. </p>
+
+   <h1 class="personagens">personagens!</h1>
+
+   <img id="banner" src="imagens/Crepusculo_G.jpg" alt="">
+
+   <h1>Crepúsculo - Personagens</h1>
+
+    <div class="blocks">
+        <!-- Edward Cullen -->
+        <a href="#Edward" class="block" style="--bg: var(--gradient-1);">
+            <div class="block__item">
+                <img src="imagens/884d0e579239d7aaec5c2a4fccf73681-removebg-preview.png" style="width: 100%;" alt="Edward Cullen">
+            </div>
+        </a>
+
+        <!-- Bella Swan -->
+        <a href="#Bella" class="block" style="--bg: var(--gradient-2);">
+            <div class="block__item">
+                <img src="imagens/BELA-removebg-preview.png" style="width: 100%;" alt="Bella Swan">
+            </div>
+        </a>
+
+        <!-- Jacob Black -->
+        <a href="#Jacob" class="block" style="--bg: var(--gradient-3);">
+            <div class="block__item">
+                <img src="imagens/baixados-removebg-preview.png" style="width: 100%;" alt="Jacob Black">
+            </div>
+        </a>
+
+        <!-- Alice Cullen -->
+        <a href="#Alice" class="block" style="--bg: var(--gradient-4);">
+            <div class="block__item">
+                <img src="imagens/Alice_Cullen-removebg-preview.png" style="width: 100%;" alt="Alice Cullen">
+            </div>
+        </a>
+
+        <!-- Carlisle Cullen -->
+        <a href="#Carlisle" class="block" style="--bg: var(--gradient-5);">
+            <div class="block__item">
+                <img src="imagens/caraaleatorio1-removebg-preview.png" style="width: 100%;" alt="Carlisle Cullen">
+            </div>
+        </a>
+
+        <a href="#Esme" class="block" style="--bg: var(--gradient-5);">
+            <div class="block__item">
+                <img src="imagens/Esme_Cullen-removebg-preview.png" style="width: 100%;" alt="Carlisle Cullen">
+            </div>
+        </a>
+
+        <a href="#Rosalie" class="block" style="--bg: var(--gradient-5);">
+            <div class="block__item">
+                <img src="imagens/Rosalie_Hale-removebg-preview.png" style="width: 100%;" alt="Carlisle Cullen">
+            </div>
+        </a>
+
+        <a href="#Emmet" class="block" style="--bg: var(--gradient-5);">
+            <div class="block__item">
+                <img src="imagens/Emmett_Cullen_-removebg-preview.png" style="width: 100%;" alt="Carlisle Cullen">
+            </div>
+        </a>
+
+        <!-- Outros personagens podem ser adicionados aqui -->
+    </div>
+
+<nav class="blocks">
+
+
+<div id="Edward" class="personagem block__item">
+    <img  src="imagens/884d0e579239d7aaec5c2a4fccf73681-removebg-preview.png" alt="">
+   
+    <h4>
+        Edward Cullen
+    </h4>
+    <p>descrito como charmoso e com beleza inumana, pele pálida como mármore, cabelos cor de bronze e olhos dourados (que ficam pretos quando ele tem sede). Ele possui força, agilidade e velocidade sobre-humanas, além da telepatia. Caracteriza-se por ser altruísta, protetor com Bella Swan e por ter um comportamento ético ao se alimentar de sangue de animais (sendo um "vampiro vegetariano<p>
+</div>
+
+<div  id="Bella" class="personagem block__item">
+    <img  src="imagens/BELA-removebg-preview.png" alt="">
+    <h4>
+        Bella Swan
+    </h4>
+    <p>Marie Cullen é a personagem principal da série de livros Crepúsculo, de Stephenie Meyer. Inicialmente, ela é uma adolescente comum, mas durante a série, Bella se apaixona e se casa com o vampiro Edward Cullen, com quem tem uma filha híbrida de humana e vampira, Renesmee Cullen.</p>
+</div>
+
+
+<div  id="Jacob" class="personagem block__item">
+    <img  src="imagens/baixados-removebg-preview.png" alt="">
+    <h4>
+    Jacob black
+    </h4>
+    <p>descrito como um atraente nativo americano da tribo Quileute, que se transforma em um lobo. Fisicamente, ele tem pele morena, cabelo preto, olhos castanhos e uma altura de \(1,94m\). Na sua forma de lobo, tem pelo castanho-avermelhado, olhos escuros e inteligentes e é muito veloz e forte. <p>
+</div>
+
+<div id="Alice" class="personagem block__item">
+    <img  src="imagens/Alice_Cullen-removebg-preview.png" alt="">
+    <h4>
+    Alice Cullen
+    </h4>
+
+    <p>é descrita como uma vampira pequena, ágil e com aparência de fada, baixa (1,47m), com cabelo curto, preto e espetado, e olhos grandes. Ela possui a habilidade de ter premonições do futuro, o que a torna uma lutadora excepcionalmente criativa e evasiva. Alice é filha adotiva de Carlisle e Esme Cullen, irmã adotiva de Edward, Emmett e Rosalie, e parceira de Jasper Hale. <p>
+</div>
+
+<div id="Carlisle" class="personagem block__item">
+    <img  src="imagens/caraaleatorio1-removebg-preview.png" alt="">
+    <h4>
+    Carlisle Cullen
+    </h4>
+
+    <p>é um vampiro alto, bonito, musculoso, com cabelos loiros e descrito como parecendo uma estrela de cinema. Ele nasceu em 1640 em Londres, foi transformado em vampiro aos 23 anos e, apesar de ser imortal, se tornou um médico brilhante, sendo conhecido por sua extrema compaixão e por se recusar a beber sangue humano, alimentando-se apenas de sangue animal. Ele é o líder e fundador do clã Cullen, marido de Esme e pai adotivo de Edward, Emmett, Alice, Jasper e Rosalie. </p>
+</div>
+
+<div id="Esme" class="personagem block__item">
+    <img  src="imagens/Esme_Cullen-removebg-preview.png" alt="">
+    <h4>
+    Esme Cullen
+    </h4>
+
+    <p>é a matriarca da família Cullen, esposa de Carlisle Cullen, conhecida por sua capacidade de amar profundamente e ter fortes instintos maternos. Ela não possui habilidades sobrenaturais, mas é extremamente criativa, artística e tem diplomas em arquitetura, arte e fotografia, além de gostar de reformar casas. Fisicamente, é descrita com rosto em forma de coração, corpo esguio e curvilíneo, cabelo cor de caramelo e olhos castanhos (humana) ou dourados/negros (vampira). </p>
+</div>
+
+<div id="Rosalie" class="personagem block__item">
+    <img src="imagens/Rosalie_Hale-removebg-preview.png" alt="">
+    <h4>
+    Rosalie Hale
+    </h4>
+
+    <p> é uma vampira de aparência deslumbrante, descrita como a mais bela do clã Cullen. Como vampira, possui superforça e velocidade, mas seus traços mais marcantes são sua beleza, teimosia e habilidades passivas em música e mecânica, sendo esta última sua grande paixão. Além disso, é filha adotiva de Carlisle e Esme, e esposa de Emmett Cullen. </p>
+</div>
+
+<div id="Emmett" class="personagem block__item">
+    <img src="imagens/Emmett_Cullen_-removebg-preview.png" alt="">
+    <h4>
+    Emmett Cullen
+    </h4>
+
+    <p>é um vampiro de grande porte, descrito como alto, musculoso e muito forte, sendo fisicamente o mais poderoso da família Cullen. Ele tem cabelos escuros, quase pretos, e, apesar de sua aparência intimidante, é brincalhão e adora apostas e lutas. Sua transformação em vampiro ocorreu em 1935. </p>
+</div>
+
+</nav>
+<h1>trailer</h1>
+
+MOVIE TRAILER - TWILIGHT SAGA
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ru8THEGdcEU?si=9SefQo2JN9cp9-Z9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h1>proximas noticias para </h1>
+<h2>2026</h2>
+<p>Uma nova série de TV de Crepúsculo está em desenvolvimento na Peacock, com Stephenie Meyer servindo como produtora executiva. A série será uma reinicialização da franquia, adaptando os livros de Meyer para a televisão pela primeira vez. A autora expressou entusiasmo em explorar mais profundamente os personagens e temas dos livros na nova série.  </p>
+
+
+<p>um provavil proximo filme sera lançado em 2026 sera canonico para  os cinemas de todo pais renovando assim uma das franquias mais romanticas de todo universo vampiresco e iremos ter mais informaçoes em janeiro do mesmo ano   </p>
+
+      
+</body>
+</html>
